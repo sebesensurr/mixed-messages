@@ -4,6 +4,7 @@ const randomNumGenerator = number => {
     return randomNumber
 }
 
+// Database the work with
 const database = {
     days: {
         Sunday: "What is the funniest day of the week? - Punday Sunday.",
@@ -40,4 +41,59 @@ const database = {
         "I ordered a chicken and an egg online. I’ll let you know."
     ]
 }
+
+// Determine the actual day
+const today = function () {
+    const d = new Date();
+    const weekday = new Array(7);
+    weekday[0] = "Sunday";
+    weekday[1] = "Monday";
+    weekday[2] = "Tuesday";
+    weekday[3] = "Wednesday";
+    weekday[4] = "Thursday";
+    weekday[5] = "Friday";
+    weekday[6] = "Saturday";
+
+    const today = weekday[d.getDay()];
+    return today;
+}
+
+// Message generator for the actual day
+const dailyMessage = () => {
+    let message = ''
+    const actualDay = today();
+    for (day in database.days) {
+        if (day === actualDay) {
+            message = database.days[day]
+        }
+    }
+    console.log(message) ;
+}
+
+// Random quote generator
+const quote = () => {
+    let number = database.quotes.length;
+    let randomNum = randomNumGenerator(number);
+    let theQuote = database.quotes[randomNum];
+    
+    console.log(theQuote);
+}
+
+// Random Dad Joke generator
+const dadJoke = () => {
+    let number = database.quotes.length;
+    let randomNum = randomNumGenerator(number);
+    let theJoke = database.dadJokes[randomNum];
+
+    console.log(theJoke);
+}
+
+
+function messageGenerator() {  
+    dailyMessage();
+    quote();
+    dadJoke();
+}
+
+messageGenerator();
 
