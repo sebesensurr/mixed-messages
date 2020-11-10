@@ -10,3 +10,6 @@
 
 ## Technologies:
 * *JavaScript*
+
+## Status
+> Completed
